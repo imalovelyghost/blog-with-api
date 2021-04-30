@@ -33,3 +33,7 @@ $.ajax(settings).done(function(data) {
         html: posts.join("")
     }).appendTo(".main-container");
 });
+
+function onclick {
+
+}
