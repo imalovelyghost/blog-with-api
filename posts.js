@@ -34,6 +34,6 @@ $.ajax(settings).done(function(data) {
     }).appendTo(".main-container");
 });
 
-function onclick {
+// function onclick {
 
-}
+// }
