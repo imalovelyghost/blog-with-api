@@ -23,7 +23,7 @@ $.ajax(settings).done(function(item) {
             //COMMENTS - body
         let commentBody = val.body
             //Send the data
-        comments.push("<h1>COMMENT</h1><div class = 'blog-comment' id='" + key + "'>" + " <br>commentPostId> " + commentPostId + " <br> commentId> " + commentId + " <br> commentName> " + commentName + " <br> commentMail> " + commentMail + " <br> commentBody> " + commentBody + "</div > ");
+            // comments.push("<h1>COMMENT</h1><div class = 'blog-comment' id='" + key + "'>" + " <br>commentPostId> " + commentPostId + " <br> commentId> " + commentId + " <br> commentName> " + commentName + " <br> commentMail> " + commentMail + " <br> commentBody> " + commentBody + "</div > ");
     });
     $("<ul/>", {
         "class": "my-comment-list",

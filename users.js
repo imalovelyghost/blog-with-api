@@ -19,7 +19,7 @@ $.ajax(settings).done(function(element) {
             //USERS - email
         let userEmail = val.email
             //Send the data
-        users.push("<h1>USERS</h1><div class = 'blog-user' id='" + key + "'>" + " <br>userUserId> " + userUserId + " <br> userUserName> " + userUserName + " <br> userEmail> " + userEmail + "</div>");
+            // users.push("<h1>USERS</h1><div class = 'blog-user' id='" + key + "'>" + " <br>userUserId> " + userUserId + " <br> userUserName> " + userUserName + " <br> userEmail> " + userEmail + "</div>");
     });
     $("<ul/>", {
         "class": "my-user-list",
