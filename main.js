@@ -101,3 +101,8 @@ $.ajax(settings).done(function(item) {
             }).appendTo(".modal-body");
         }) //ClICK
 }); //AJAX
+
+// $("#hide-comments").click(function() {
+
+
+// })
