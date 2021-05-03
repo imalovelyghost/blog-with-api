@@ -11,10 +11,11 @@ var settings = {
 $.ajax(settings).done(function(data) {
         var posts = [];
         $.each(data, function(key, val) {
+            // console.log(data)
             //POSTS - title
             var postTitle = val.title
             var postId = val.id
-            console.log()
+                // console.log()
             posts.push("<li class = 'list-group-item' data-bs-toggle= 'modal' data-bs-target='#myModal' id='" + key + "' myPostId='" + postId + "' >" + postTitle + " </li>");
             // posts.push("<li class = 'list-group-item' data-bs-toggle= 'modal' data-bs-target='#myModal' id='" + key + "'>" + postTitle + " </li>");
 
@@ -23,10 +24,12 @@ $.ajax(settings).done(function(data) {
             "class": "my-post-list",
             html: posts.join("")
         }).appendTo(".main-container");
-
         $(".list-group-item").click(function() {
             $(".modal-title").text(data[$(this).attr("id")].title);
             $(".modal-body").text(data[$(this).attr("id")].body);
+            $(".modal-body").attr("id", (data[$(this).attr("id")].id));
+            var selectedComment = event.target.id
+            console.log(selectedComment)
         })
     }) //AJAX
 
@@ -56,10 +59,11 @@ $.ajax(settings).done(function(element) {
         $(".modal-mail").text(element[$(this).attr("id")].email);
     })
 }); //AJAX
-
+var selectedComment;
 var settings = {
     //https://jsonplaceholder.typicode.com/posts/1/comments
-    "url": "https://jsonplaceholder.typicode.com/comments",
+    // "url": "https://jsonplaceholder.typicode.com/posts/" + selectedComment + "/comments",
+    "url": "https://jsonplaceholder.typicode.com/posts/1/comments ",
     "method": "GET",
     "timeout": 0,
     "headers": {
@@ -68,13 +72,13 @@ var settings = {
 };
 //Finally, in the post modals, you must add a button that when clicked will load all the comments that belong to that post
 $.ajax(settings).done(function(item) {
-
+    //console.log(item)
+    //var selectedComment
     $("#show-comments").click(function() {
-
-            //var comments = [];
+            var comments = [];
             $.each(item, function(key, val) {
                 //COMMENTS - postId
-                let commentPostId = val.postId
+                var commentPostId = val.postId
                     //COMMENTS - id
                 let commentId = val.id
                     //COMMENTS - name
@@ -83,13 +87,17 @@ $.ajax(settings).done(function(item) {
                 let commentMail = val.email
                     //COMMENTS - body
                 let commentBody = val.body
-                    //Send the data
-                    //comments.push("<h1>COMMENT</h1><li class = 'blog-comment' id=>" + " <br>commentPostId> " + commentPostId + " <br> commentId> " + commentId + " <br> commentName> " + commentName + " <br> commentMail> " + commentMail + " <br> commentBody> " + commentBody + "</li > ");
-                console.log(commentPostId[3])
-
             }); //EACH  
-
-
-
+            // Queria concatenar esta variable a la url (selectedComment)
+            console.log(item)
+            comments.push("<li class = 'comments-of-post' id=' 0'> " + (item[0].body) + " </li>");
+            comments.push("<li class = 'comments-of-post' id=' 1'> " + (item[1].body) + " </li>");
+            comments.push("<li class = 'comments-of-post' id=' 2'> " + (item[2].body) + " </li>");
+            comments.push("<li class = 'comments-of-post' id=' 3'> " + (item[3].body) + " </li>");
+            comments.push("<li class = 'comments-of-post' id=' 4'> " + (item[4].body) + " </li>");
+            $("<ul/>", {
+                "class": "my-comments-list",
+                html: comments.join("")
+            }).appendTo(".modal-body");
         }) //ClICK
 }); //AJAX
